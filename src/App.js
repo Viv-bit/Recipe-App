@@ -1,57 +1,47 @@
 import React,{useEffect, useState} from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import Recipe from './Recipe';
+import Header from './components/Header';
+import Landing from './components/Landing';
+import Signup from './components/Signup';
+import ShowRecipes from './components/showRecipes';
+import SignIn from './components/Signup';
+
+
 
 const App = () => {
-  const APP_ID = "793e6961";
-  const APP_KEY = "db9a41e884e6e98366784c27c10aff99";
-
-
-  const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('chicken');
-
-    useEffect(() => {
-      getRecipies();
-    }, [query]);
-    
-    const getRecipies = async () => {
-      const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-      const data = await response.json();
-      setRecipes(data.hits);
-
-    };
-      const updateSearch = e => {
-        setSearch(e.target.value);
-      }
-      const getSearch = e => {
-        e.preventDefault();
-        setQuery(search);
-        setSearch('');
-      }
+  
 
       return(
-        <div className="App">
-          <form onSubmit={getSearch} className="search-form">
-            <input type="text" placeholder="Type desired food" className="search-bar" value={search} onChange={updateSearch} />
-            <button  
-              type="submit" 
-              className="search-button">
-              Search
-            </button>
-          </form>
-          <div className="recipes">
-          {recipes.map(recipe => (
-            <Recipe 
-              key={recipe.recipe.label}
-              title={recipe.recipe.label} 
-              calories={recipe.recipe.calories} 
-              image={recipe.recipe.image} 
-              ingredients={recipe.recipe.ingredients}
-            />
-          ))}
+        <Router>
+            <div className="App">
+            <Header />
+           
+          <div className="link">
+            <Link to="/">
+              Landing
+            </Link>
+
+            <Link to="/recipes">
+              Recipes
+            </Link>
+
+            <Link to="/signup">
+              Sign Up
+            </Link>
+            </div>
+
+            <Route exact path="/" component={Landing} />
+
+            <Route path="/recipes" component={ShowRecipes} />
+            
+            <Route path="/signup" component={Signup} />
+            
+          
           </div>
-        </div>
+        </Router>
+        
       );
     };
 

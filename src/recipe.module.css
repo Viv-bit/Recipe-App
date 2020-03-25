@@ -7,7 +7,7 @@
     justify-content: space-around;
     background: #fff;
     align-items: center;
-    min-width: 40%;
+    width: 28rem;
 }
 .image{
     border-radius: 50%;

@@ -1,0 +1,36 @@
+.headerStyle{
+    display: flex;
+    background: #000000;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .image{
+    border-radius: 50%;
+    width: 3.125rem;
+    height: 3.125rem;
+    padding-right: 0.9vh;
+}
+.land{
+  color: #fff;
+}
+.Screen{
+  
+  min-width: 1024px;
+	width: 100%;
+  height: calc(100vh - 108.475px);
+	position: relative;
+}
+.text{
+  position: absolute;
+}
+.root-controller{
+  display: flex;
+  justify-content: center;
+  padding-top: o.2rem;
+  background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 3;
+
+}
